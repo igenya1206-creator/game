@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>LOADOUT // COSTUME SELECT</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="boot">
+    <div class="boot-inner">
+      <p class="boot-kicker">UNIT PREVIEW · LOCAL BUILD</p>
+      <h1>COSTUME SELECT</h1>
+      <div class="boot-bar"><span></span></div>
+      <p class="boot-sub">キャラクターデータを初期化しています</p>
+    </div>
+  </div>
+
+  <main id="app" hidden>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo-mark">◇</span>
+        <div>
+          <p class="brand-kicker">OPERATOR LOADOUT</p>
+          <h1>COSTUME SELECT</h1>
+        </div>
+      </div>
+      <div class="top-meta">
+        <span>UNIT-07</span>
+        <span class="live">LIVE PREVIEW</span>
+      </div>
+    </header>
+
+    <section class="stage-wrap">
+      <div class="stage">
+        <div class="stage-grid"></div>
+        <div class="stage-glow"></div>
+        <div class="character-stack">
+          <img class="layer layer-costume" id="costumeImg" src="" alt="" />
+        </div>
+        <div class="nameplate">
+          <p class="unit">UNIT // UNIT-07</p>
+          <h2 id="costumeLabel">下着</h2>
+          <p id="specLine">BASE STATE</p>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <section>
+          <h3>コスチューム</h3>
+          <div class="chips" id="costumeChips"></div>
+        </section>
+
+        <p class="hint">今は衣装ごとに1枚絵をまるごと切り替える方式です（髪型は絵に焼き込み済み）</p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
