@@ -1,0 +1,240 @@
+:root {
+  --bg: #07080d;
+  --panel: rgba(12, 16, 26, 0.82);
+  --line: rgba(180, 210, 255, 0.22);
+  --accent: #7ce0ff;
+  --warm: #ffb35c;
+  --skin: #e8b39a;
+  --skin-shadow: #c4846d;
+  --hair: #2a1a12;
+  --bust: 1.35;
+  --waist: 0.72;
+  --hip: 1.18;
+  --skirt: 28%;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: var(--bg); color: #eef4ff; font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif; overflow: hidden; }
+
+#boot {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 20%, #16304a, #07080d 60%);
+  z-index: 50;
+}
+.boot-inner { text-align: center; letter-spacing: 0.18em; }
+.boot-kicker, .boot-sub { color: #8aa0b8; font-size: 11px; margin: 12px 0; }
+.boot-inner h1 { font-size: 28px; font-weight: 600; }
+.boot-bar { width: 220px; height: 3px; margin: 18px auto; background: #1c2a3a; overflow: hidden; }
+.boot-bar span { display: block; height: 100%; width: 40%; background: var(--accent); animation: load 1.4s ease-in-out infinite; }
+@keyframes load { from { transform: translateX(-120%); } to { transform: translateX(320%); } }
+
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 22px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; gap: 12px; align-items: center; }
+.logo-mark { color: var(--accent); font-size: 22px; }
+.brand-kicker { font-size: 10px; letter-spacing: 0.28em; color: #8aa0b8; }
+.brand h1 { font-size: 18px; font-weight: 600; letter-spacing: 0.12em; }
+.top-meta { display: flex; gap: 14px; font-size: 11px; color: #9ab0c6; letter-spacing: 0.08em; }
+.live { color: var(--accent); }
+
+.stage-wrap { display: grid; grid-template-columns: 1.35fr 0.9fr; height: calc(100vh - 72px); }
+.stage {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 80%, rgba(80, 160, 220, 0.18), transparent 55%),
+    linear-gradient(180deg, #0b1018 0%, #121826 100%);
+}
+.stage-grid {
+  position: absolute; inset: 12% 8% 0;
+  background-image:
+    linear-gradient(rgba(124,224,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,224,255,0.07) 1px, transparent 1px);
+  background-size: 42px 42px;
+  transform: perspective(600px) rotateX(62deg);
+  transform-origin: bottom center;
+}
+.stage-glow {
+  position: absolute; left: 50%; bottom: 8%; width: 280px; height: 70px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(124,224,255,0.28), transparent 70%);
+  filter: blur(8px);
+}
+
+.actor {
+  position: absolute; left: 50%; bottom: 11%;
+  width: 180px; height: 420px;
+  transform: translateX(-50%);
+  transform-origin: 50% 100%;
+}
+.actor.enter { animation: appear 1.6s cubic-bezier(.16,1,.3,1) both; }
+@keyframes appear {
+  from { transform: translateX(42%) scale(0.92); filter: blur(8px) brightness(1.4); opacity: 0; }
+  to { transform: translateX(-50%) scale(1); filter: none; opacity: 1; }
+}
+
+.shadow {
+  position: absolute; left: 50%; bottom: -8px; width: 120px; height: 18px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(0,0,0,.55), transparent 70%);
+}
+
+.leg, .sock, .shoe, .arm, .torso, .hip, .head, .neck, .bust, .skirt, .chest-plate, .face, .hair-back, .hair-front, .bangs {
+  position: absolute;
+}
+
+.leg {
+  width: 28px; height: 168px; bottom: 28px; border-radius: 16px 16px 8px 8px;
+  background: linear-gradient(180deg, var(--skin), var(--skin-shadow));
+}
+.leg.left { left: 52px; transform: rotate(3deg); }
+.leg.right { right: 52px; transform: rotate(-3deg); }
+
+.sock {
+  width: 30px; height: 0; bottom: 28px; background: #f3f6fb; opacity: 0;
+  border-radius: 0 0 8px 8px;
+}
+.sock.left { left: 51px; }
+.sock.right { right: 51px; }
+.costume-school .sock { opacity: 1; height: 78px; }
+
+.shoe {
+  width: 36px; height: 14px; bottom: 18px; border-radius: 10px 18px 6px 6px;
+  background: #1a1f2a;
+}
+.shoe.left { left: 48px; }
+.shoe.right { right: 48px; }
+.costume-bunny .shoe, .costume-maid .shoe { background: #111; height: 28px; bottom: 16px; }
+.costume-nurse .shoe { background: #f4f7ff; }
+.costume-witch .shoe { background: #2b1a12; }
+
+.hip {
+  width: calc(88px * var(--hip)); height: 70px; left: 50%; bottom: 168px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--skin), var(--skin-shadow));
+  border-radius: 38px 38px 28px 28px;
+}
+.skirt {
+  left: 50%; top: 28px; transform: translateX(-50%);
+  width: 118%; height: var(--skirt);
+  border-radius: 8px 8px 18px 18px;
+  background: #1c3148;
+  box-shadow: inset 0 8px 0 rgba(255,255,255,.08);
+}
+.costume-school .skirt { background: linear-gradient(180deg, #2d4a7a, #1a2d4d); }
+.costume-nurse .skirt { background: #f3f6fb; }
+.costume-maid .skirt { background: #151515; }
+.costume-witch .skirt { background: #2a1638; }
+.costume-suit .skirt { background: #243044; }
+.costume-bunny .skirt { height: 10px; background: #111; opacity: .35; }
+
+.torso {
+  width: calc(54px * var(--waist)); height: 86px; left: 50%; bottom: 228px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--skin-shadow), var(--skin));
+  border-radius: 18px;
+}
+.bust {
+  left: 50%; top: -22px; transform: translateX(-50%);
+  width: calc(78px * var(--bust)); height: calc(48px * var(--bust));
+  border-radius: 50% 50% 42% 42%;
+  background: radial-gradient(circle at 30% 30%, #f0c2ad, var(--skin) 42%, var(--skin-shadow));
+  box-shadow: 0 10px 16px rgba(0,0,0,.25);
+}
+.chest-plate {
+  left: 50%; top: 10px; transform: translateX(-50%);
+  width: 86%; height: 58px; border-radius: 14px;
+  background: linear-gradient(180deg, rgba(140,200,230,.55), rgba(30,50,70,.8));
+  border: 1px solid rgba(180,230,255,.35);
+}
+.costume-school .chest-plate { background: #f4f7fb; border-color: #c9d3e2; }
+.costume-nurse .chest-plate { background: #fff; border: 2px solid #d04a63; }
+.costume-maid .chest-plate { background: #111; border: 2px solid #eee; }
+.costume-witch .chest-plate { background: #3b2154; }
+.costume-suit .chest-plate { background: #2a3648; }
+.costume-bunny .chest-plate { background: #111; border-radius: 40% 40% 20% 20%; }
+
+.arm {
+  width: 18px; height: 120px; bottom: 210px; border-radius: 12px;
+  background: linear-gradient(180deg, var(--skin), var(--skin-shadow));
+}
+.arm.left { left: 28px; transform: rotate(12deg); }
+.arm.right { right: 28px; transform: rotate(-12deg); }
+
+.neck { width: 18px; height: 18px; left: 50%; bottom: 312px; transform: translateX(-50%); background: var(--skin); border-radius: 6px; }
+.head { width: 58px; height: 70px; left: 50%; bottom: 328px; transform: translateX(-50%); }
+.face { inset: 8px 6px 4px; border-radius: 28px 28px 24px 24px; background: linear-gradient(180deg, #f0c6b0, var(--skin)); }
+.hair-back, .hair-front, .bangs { background: var(--hair); }
+.hair-back { left: -8px; right: -8px; top: -6px; height: 86px; border-radius: 30px 30px 12px 12px; }
+.hair-front { left: 2px; right: 2px; top: -2px; height: 22px; border-radius: 20px 20px 0 0; }
+.bangs { left: 8px; right: 18px; top: 10px; height: 16px; border-radius: 0 0 16px 10px; }
+
+.hair-short .hair-back { height: 42px; }
+.hair-twin .hair-back { height: 110px; border-radius: 24px; }
+.hair-twin .hair-back::before, .hair-twin .hair-back::after {
+  content: ""; position: absolute; top: 36px; width: 16px; height: 92px; background: var(--hair); border-radius: 10px;
+}
+.hair-twin .hair-back::before { left: -6px; }
+.hair-twin .hair-back::after { right: -6px; }
+.hair-ponytail .hair-back { height: 120px; width: 28px; left: 50%; transform: translateX(-10%); border-radius: 12px; }
+
+.nameplate {
+  position: absolute; left: 24px; bottom: 22px;
+  padding: 10px 14px; border: 1px solid var(--line);
+  background: rgba(6,10,16,.55); backdrop-filter: blur(10px);
+  min-width: 240px;
+}
+.unit { font-size: 10px; letter-spacing: 0.22em; color: var(--accent); }
+.nameplate h2 { font-size: 16px; margin: 4px 0; }
+#specLine { font-size: 11px; color: #9ab0c6; }
+
+.panel {
+  padding: 18px 18px 28px; overflow: auto;
+  background: var(--panel); border-left: 1px solid var(--line);
+}
+.panel section { margin-bottom: 18px; }
+.panel h3 { font-size: 11px; letter-spacing: 0.2em; color: #9ab0c6; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); background: transparent; color: #dce7f5;
+  padding: 8px 10px; border-radius: 999px; font-size: 12px; cursor: pointer;
+}
+.chip.active { border-color: var(--accent); color: var(--accent); background: rgba(124,224,255,.08); }
+.slider { display: grid; grid-template-columns: 64px 1fr 52px; gap: 8px; align-items: center; margin: 8px 0; font-size: 12px; color: #b7c6d6; }
+.slider input { width: 100%; accent-color: var(--accent); }
+.slider em { font-style: normal; text-align: right; color: var(--warm); }
+
+#deploy, #back {
+  width: 100%; margin-top: 8px; padding: 14px;
+  border: 0; border-radius: 4px; cursor: pointer;
+  background: linear-gradient(90deg, #6ad2f2, #7ce0ff);
+  color: #081018; font-weight: 700; letter-spacing: 0.16em;
+}
+.hint { margin-top: 8px; font-size: 11px; color: #7f93a8; }
+
+#cinematic { position: fixed; inset: 0; background: #05070b; z-index: 20; }
+.cine-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 70% 40%, rgba(255,179,92,.16), transparent 35%),
+    radial-gradient(circle at 30% 70%, rgba(124,224,255,.12), transparent 40%),
+    #07090f;
+}
+.scanlines {
+  position: absolute; inset: 0; pointer-events: none; opacity: .12;
+  background: repeating-linear-gradient(to bottom, #000 0 1px, transparent 1px 3px);
+}
+.cine-ui { position: absolute; left: 40px; top: 48px; }
+.cine-kicker { letter-spacing: 0.32em; font-size: 11px; color: var(--accent); }
+#cineTitle { font-size: 36px; margin: 8px 0; }
+#cineSpec { color: #9ab0c6; }
+#cinematic .actor { left: 58%; bottom: 8%; width: 220px; height: 520px; }
+#back { position: absolute; right: 24px; bottom: 24px; width: auto; padding: 12px 18px; background: #dce7f5; }
+
+@media (max-width: 860px) {
+  .stage-wrap { grid-template-columns: 1fr; grid-template-rows: 52vh 48vh; }
+  .actor { transform: translateX(-50%) scale(0.86); bottom: 16%; }
+  #cinematic .actor { left: 50%; }
+}
